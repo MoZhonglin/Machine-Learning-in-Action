@@ -104,11 +104,12 @@ def plotTree(myTree, parentPt, nodeTxt):
 def createPlot(inTree):
     fig = plt.figure(1, facecolor='white')
     fig.clf()
-    axprops = dict(xticks=[], yticks=[])
-    createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)
-    plotTree.totalW = getNumLeafs(inTree)
-    plotTree.totalD = getTreeDepth(inTree)
-    plotTree.xOff = -0.5 / plotTree.totalW
-    plotTree.yOff = 1
-    plotTree(inTree, (0.5, 1), '')
+    axprops = dict(xticks=[], yticks=[])  # do not show x-axis and y-axis
+    createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)  # double star to unpack params
+    plotTree.totalW = getNumLeafs(inTree)  # retrieve width
+    plotTree.totalD = getTreeDepth(inTree) # retrieve height
+    plotTree.xOff = -0.5 / plotTree.totalW # set x-axis offset
+    plotTree.yOff = 1                      # set y-axis offset
+    plotTree(inTree, (0.5, 1), '')         # plot tree recursively
     plt.show()
+
